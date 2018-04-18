@@ -84,7 +84,7 @@ command! -bang -nargs=* GGrep
 map <leader>r :GGrep<CR>
 
 let NERDTreeQuitOnOpen=1
-let NERDTreeShowHidden=0
+let NERDTreeShowHidden=1
 map <leader>f :NERDTreeToggle<CR>
 
 map <leader>e :TagbarToggle<CR>
@@ -96,7 +96,7 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 let g:syntastic_yaml_checkers = ['jsyaml']
 
 let g:terraform_align=1
