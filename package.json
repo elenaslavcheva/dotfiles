@@ -2,7 +2,8 @@
   "name": "dotfiles",
   "version": "1.0.0",
   "dependencies": {
+    "jflint": "^0.2.0",
     "js-yaml": "^3.10.0",
-    "jflint": "^0.2.0"
+    "npm": "^5.7.1"
   }
 }
