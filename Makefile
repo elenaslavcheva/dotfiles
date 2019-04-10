@@ -1,32 +1,26 @@
 SHELL := bash
 
 .PHONY: \
-	brew-install \
-	brew-bundle \
 	fzf \
 	install-python2-dependencies \
 	install-python3-dependencies \
 	install-npm-dependencies \
 	nvim \
 	sdkman \
-	zsh
+	zsh \
+	brew-install \
+	brew-bundle
 
 all: \
-	brew-install \
-	brew-bundle \
 	fzf \
 	install-python2-dependencies \
 	install-python3-dependencies \
 	install-npm-dependencies \
 	nvim \
 	sdkman \
-	zsh
-
-brew-install:
-	if [[ ! -d /usr/local/Homebrew ]]; then curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install | ruby; fi
-
-brew-bundle:
-	brew bundle
+	zsh \
+	brew-install \
+	brew-bundle
 
 fzf:
 	ln -sf $(PWD)/fzf.zsh ~/.fzf.zsh
@@ -49,3 +43,10 @@ zsh:
 		| zsh
 	ln -fns ${PWD}/zshrc ${HOME}/.zshrc
 	ln -fns ${PWD}/zshenv ${HOME}/.zshenv
+
+brew-install:
+	if [[ ! -d /usr/local/Homebrew ]]; then curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install | ruby; fi
+
+brew-bundle:
+	brew bundle
+
