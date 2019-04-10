@@ -131,31 +131,31 @@ function! s:check_back_space() abort "{{{
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction"}}}
 
-call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
-call deoplete#custom#set('buffer',        'mark', 'ℬ')
-call deoplete#custom#set('tag',           'mark', '⌦')
-call deoplete#custom#set('omni',          'mark', '⌾')
-call deoplete#custom#set('ternjs',        'mark', '⌁')
-call deoplete#custom#set('jedi',          'mark', '⌁')
-call deoplete#custom#set('vim',           'mark', '⌁')
-call deoplete#custom#set('neosnippet',    'mark', '⌘')
-call deoplete#custom#set('syntax',        'mark', '♯')
-call deoplete#custom#set('tmux-complete', 'mark', '⊶')
-call deoplete#custom#set('vim',           'rank', 630)
-call deoplete#custom#set('ternjs',        'rank', 620)
-call deoplete#custom#set('jedi',          'rank', 610)
-call deoplete#custom#set('omni',          'rank', 600)
-call deoplete#custom#set('neosnippet',    'rank', 510)
-call deoplete#custom#set('member',        'rank', 500)
-call deoplete#custom#set('file_include',  'rank', 420)
-call deoplete#custom#set('file',          'rank', 410)
-call deoplete#custom#set('tag',           'rank', 400)
-call deoplete#custom#set('around',        'rank', 330)
-call deoplete#custom#set('buffer',        'rank', 320)
-call deoplete#custom#set('dictionary',    'rank', 310)
-call deoplete#custom#set('tmux-complete', 'rank', 300)
-call deoplete#custom#set('syntax',        'rank', 200)
-call deoplete#custom#set('_', 'converters', [
+call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
+call deoplete#custom#source('buffer',        'mark', 'ℬ')
+call deoplete#custom#source('tag',           'mark', '⌦')
+call deoplete#custom#source('omni',          'mark', '⌾')
+call deoplete#custom#source('ternjs',        'mark', '⌁')
+call deoplete#custom#source('jedi',          'mark', '⌁')
+call deoplete#custom#source('vim',           'mark', '⌁')
+call deoplete#custom#source('neosnippet',    'mark', '⌘')
+call deoplete#custom#source('syntax',        'mark', '♯')
+call deoplete#custom#source('tmux-complete', 'mark', '⊶')
+call deoplete#custom#source('vim',           'rank', 630)
+call deoplete#custom#source('ternjs',        'rank', 620)
+call deoplete#custom#source('jedi',          'rank', 610)
+call deoplete#custom#source('omni',          'rank', 600)
+call deoplete#custom#source('neosnippet',    'rank', 510)
+call deoplete#custom#source('member',        'rank', 500)
+call deoplete#custom#source('file_include',  'rank', 420)
+call deoplete#custom#source('file',          'rank', 410)
+call deoplete#custom#source('tag',           'rank', 400)
+call deoplete#custom#source('around',        'rank', 330)
+call deoplete#custom#source('buffer',        'rank', 320)
+call deoplete#custom#source('dictionary',    'rank', 310)
+call deoplete#custom#source('tmux-complete', 'rank', 300)
+call deoplete#custom#source('syntax',        'rank', 200)
+call deoplete#custom#source('_', 'converters', [
       \ 'converter_remove_paren',
       \ 'converter_remove_overlap',
       \ 'converter_truncate_abbr',
@@ -167,6 +167,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.j2 set filetype=yaml
 au BufRead,BufNewFile */playbooks/*.yml set filetype=ansible
 au BufRead,BufNewFile */ansible/*.yml set filetype=ansible
+au BufRead,BufNewFile Jenkinsfile set filetype=jenkinsfile
 autocmd Filetype go set ts=4 sw=4 et
 autocmd FileType go nmap <leader>r <Plug>(go-run-tab)
 autocmd FileType go nmap <leader>t <Plug>(go-test)
@@ -174,6 +175,7 @@ autocmd FileType go nmap <leader>b <Plug>(go-build)
 autocmd FileType go nmap <leader>d <Plug>(go-doc)
 autocmd FileType java setlocal ts=4 sw=4 omnifunc=javacomplete#Complete
 autocmd FileType groovy setlocal ts=4 sw=4
+autocmd FileType jenkinsfile setlocal ts=4 sw=4
 autocmd Filetype yaml set ts=2 sw=2 et
 autocmd Filetype ansible set ts=2 sw=2 et
 autocmd FileType terraform setlocal commentstring=#%s
@@ -181,3 +183,6 @@ autocmd FileType make setlocal noexpandtab
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+let g:python2_host_prog = '/usr/local/bin/python2'
+let g:python3_host_prog = '/usr/local/bin/python3'
